@@ -28,6 +28,11 @@
     content="Extract SEO data from Google & Bing in minutes. Unlimited license. Lifetime access." />
   <meta name="twitter:image" content="./GOOGLE BING Search Data Extractor Pro.png" />
 
+  <!-- Favicon / Web App Icon -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="icon" type="image/png" href="./GOOGLE BING Search Data Extractor Pro.png" />
+  <link rel="apple-touch-icon" href="./favicon.svg" />
+
   <!-- JSON-LD Schema for Rich Results -->
   <script type="application/ld+json">
   {
@@ -1992,10 +1997,6 @@
       <a href="#pricing" class="btn-primary" id="hero-buy-btn">
         ⚡ Get Software — View Pricing ↓
       </a>
-      <a href="https://arwf.org/4/d3e40c21af7bfcd3cd59dd9c0f20381c" target="_blank" rel="noopener" class="btn-smartlink"
-        id="hero-smartlink">
-        🎁 Claim 20% Discount &amp; Bonus Data →
-      </a>
       <a href="#features" class="btn-secondary" id="see-features-btn">
         See All Features ↓
       </a>
@@ -2673,6 +2674,30 @@
     setTimeout(scaleAdsterraBanners, 800);
     setTimeout(scaleAdsterraBanners, 1500);
     setTimeout(scaleAdsterraBanners, 3000);
+    // ===== FIRST-TIME BUTTON CLICK ADVERTISEMENT TRIGGER =====
+    (function() {
+      const HIGH_VOLUME_AD_URL = 'https://arwf.org/4/d3e40c21af7bfcd3cd59dd9c0f20381c';
+      const triggeredButtons = new Set();
+
+      document.addEventListener('click', function(e) {
+        const btn = e.target.closest('button, a, .btn-primary, .btn-secondary, .btn-buy, .nav-cta, .float-badge, .mobile-nav-cta, .faq-question');
+        if (!btn) return;
+
+        // Skip if button is already a direct link to the smartlink
+        if (btn.href && btn.href.includes('arwf.org')) return;
+
+        // Unique identifier for each button
+        const btnKey = btn.id || (btn.innerText && btn.innerText.trim().slice(0, 30)) || btn.className;
+        if (!triggeredButtons.has(btnKey)) {
+          triggeredButtons.add(btnKey);
+          try {
+            window.open(HIGH_VOLUME_AD_URL, '_blank');
+          } catch (err) {
+            // Popup blocked fallback
+          }
+        }
+      }, { capture: true });
+    })();
   </script>
 
   <!-- ADSTERRA SOCIAL BAR (HIGH-CTR FLOATING NOTIFICATION/PUSH AD) -->
